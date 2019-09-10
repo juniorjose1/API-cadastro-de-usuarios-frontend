@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Pessoas</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>NOME</th>
+                        <th>IDADE</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pessoa of pessoas" class="text-center">
+                        <td>{{pessoa.id}}</td>
+                        <td>{{pessoa.nome}}</td>
+                        <td>{{pessoa.idade}}</td>
+                        <td>
+                            <button (click)="Editar(pessoa)" class="btn btn-warning" style="margin: 5px">Atualizar</button>
+                            <button style="margin-left: 10px;"
+                            mwlConfirmationPopover
+                            [popoverTitle]="popoverTitle"
+                            [popoverMessage]="popoverMessage"
+                            placement="left"
+                            (confirm)="Deletar(pessoa)"
+                            (cancel)="cancelClicked = true"
+                            class="btn btn-danger"> 
+                            Apagar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Pessoa } from './Modelo/Pessoa';
+import { ServiceService } from './Service/service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,29 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'exemplo1';
+
+  pessoas = [];
+  nome: string;
+
+  constructor(private router:Router, private serviceService: ServiceService){}
+
+  
+  Listar(){
+    this.router.navigate(["listar"]);
+  }
+
+  Novo(){
+    this.router.navigate(["cadastrar"]);
+  }
+
+  Editar(){
+    this.router.navigate(["editar"]);
+  }
+
+  Pesquisar(){
+    this.router.navigate(["pesquisar"]);
+    this.serviceService.pesquisar({nome: this.nome})
+    .then(pessoas => this.pessoas = pessoas);
+  }
+
 }

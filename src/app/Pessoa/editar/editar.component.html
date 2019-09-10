@@ -1,0 +1,49 @@
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Atualizar Dados</h3>
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" action="">
+                <div class="form-grupo">
+                    <label for="nome">Nome:</label>
+                    <input [(ngModel)]="pessoa.nome" name="nome" 
+                    type="text" class="form-control" #nome="ngModel"
+                    pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" minlength="3" required/>
+                    <span class="help-block" *ngIf="!nome.valid && nome.touched">
+                        <ul>
+                            <li *ngIf="nome.errors.required" style="color: red">
+                                Nome é obrigatório.      
+                            </li>
+                            <li *ngIf="nome.errors.pattern" style="color: red">
+                                Somente Letras.    
+                            </li>
+                            <li *ngIf="nome.errors.minlength" style="color: red">
+                                Mínimo de 3 letras.    
+                            </li>
+                        </ul>
+                    </span>   
+                </div>
+                <br>
+                <div class="form-grupo">
+                    <label for="idade">Idade:</label>
+                    <input [(ngModel)]="pessoa.idade" name="idade" type="text"
+                     class="form-control" #idade="ngModel" pattern="[0-9]+$" required/>
+                     <span class="help-block" *ngIf="!idade.valid && idade.touched">
+                        <ul>
+                            <li *ngIf="idade.errors.required" style="color: red">
+                                Idade é obrigatório.      
+                            </li>
+                            <li *ngIf="!idade.valid" style="color: red">
+                                Somente Números.    
+                            </li>
+                        </ul>
+                    </span>   
+                </div>
+                <br>
+                <button (click)="Atualizar(pessoa)" 
+                class="btn btn-danger" [disabled]="!f.valid" type="submit">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
