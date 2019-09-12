@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/Service/service.service';
+import { Pessoa } from 'src/app/Modelo/Pessoa';
 
 @Component({
   selector: 'app-pesquisar',
@@ -7,16 +8,17 @@ import { ServiceService } from 'src/app/Service/service.service';
   styleUrls: ['./pesquisar.component.css']
 })
 export class PesquisarComponent implements OnInit {
-  pessoas = [];
+  pessoas:Pessoa[];
   nome: string;
   constructor(private serviceService: ServiceService) { }
 
   ngOnInit() {
-    this.pesquisar();
+  this.PesquisarPessoas();
   }
-  
-  pesquisar(){  
+
+  PesquisarPessoas(){
     this.serviceService.pesquisar({nome: this.nome})
     .then(pessoas => this.pessoas = pessoas);
   }
+
 }
