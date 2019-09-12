@@ -11,8 +11,6 @@ import { ServiceService } from './Service/service.service';
 export class AppComponent {
   title = 'exemplo1';
 
-  pessoas = [];
-  nome: string;
 
   constructor(private router:Router, private serviceService: ServiceService){}
 
@@ -31,8 +29,6 @@ export class AppComponent {
 
   Pesquisar(){
     this.router.navigate(["pesquisar"]);
-    this.serviceService.pesquisar({nome: this.nome})
-    .then(pessoas => this.pessoas = pessoas);
   }
 
 }
