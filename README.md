@@ -6,9 +6,11 @@ Nesta API o usuário do sistema poderá Cadastrar, Alterar, Excluir, Pesquisar e
 
 Este Projeto foi gerado com Angular CLI versão 8.0.2
 
-Cadastrar: OK
-Excluir: OK
-Listar: OK
-Alterar: OK
-Pesquisar: OK
-Exportar em PDF: Em Desenvolvimento
+Cadastrar: OK | Alterar: OK
+
+Excluir: OK | Pesquisar: OK
+
+Listar: OK | Exportar em PDF: Em Desenvolvimento
+
+
+
