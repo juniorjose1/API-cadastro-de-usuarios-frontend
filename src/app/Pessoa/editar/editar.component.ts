@@ -11,31 +11,31 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditarComponent implements OnInit {
 
-  pessoa:Pessoa = new Pessoa();
+  pessoa: Pessoa = new Pessoa();
 
-  constructor(private router:Router, private service:ServiceService, private toastr: ToastrService) { }
+  constructor(private router: Router, private service: ServiceService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.Editar();
   }
 
-  Editar(){
-    
-    let id=localStorage.getItem("id");
+  Editar() {
+
+    let id = localStorage.getItem("id");
     this.service.getPessoaId(+id)
-    .subscribe(data=>{
-      this.pessoa=data;
-    })
+      .subscribe(data => {
+        this.pessoa = data;
+      })
 
   }
 
-  Atualizar(pessoa:Pessoa){
+  Atualizar(pessoa: Pessoa) {
     this.service.atualizarPessoas(pessoa)
-    .subscribe(data=>{
-      this.pessoa=data;
-      this.toastr.success('Atualização Feita Com Sucesso !')
-      this.router.navigate(["listar"]);
-    })
+      .subscribe(data => {
+        this.pessoa = data;
+        this.toastr.success('Atualização Feita Com Sucesso !')
+        this.router.navigate(["listar"]);
+      })
 
   }
 

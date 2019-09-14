@@ -13,6 +13,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { PesquisarComponent } from './Pessoa/pesquisar/pesquisar.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+
+  { path: '', redirectTo: '/listar', pathMatch: 'full' },
+
+];
 
 @NgModule({
   declarations: [
@@ -23,6 +30,7 @@ import { PesquisarComponent } from './Pessoa/pesquisar/pesquisar.component';
     PesquisarComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -31,7 +39,7 @@ import { PesquisarComponent } from './Pessoa/pesquisar/pesquisar.component';
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-top-right',
-      preventDuplicates:true
+      preventDuplicates: true
     }),
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger',

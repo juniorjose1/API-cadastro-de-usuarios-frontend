@@ -1,13 +1,35 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-                <div class="input-group mb-3">
-                        <input type="text" name="nome" [(ngModel)]="nome" class="form-control" placeholder="Nome..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                        <button (click)="PesquisarPessoas()" class="btn btn-outline-secondary" type="submit" id="button-addon2">Pesquisar</button>
+            <h3>Pesquisar Pessoas por Nome ou Idade</h3>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-6">
+                    <form #pesquisarnome="ngForm">
+                        <div class="input-group mb-3">
+                            <input pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" type="text" name="nome"
+                                [(ngModel)]="nome" class="form-control" placeholder="Nome...">
+                            <div class="input-group-append">
+                                <button [disabled]="!pesquisarnome.valid" (click)="PesquisarPessoasNome()"
+                                    class="btn btn-outline-secondary" type="submit"
+                                    id="button-addon2">Pesquisar</button>
+                            </div>
                         </div>
-                      </div>
-            <h3>Pessoas</h3>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form #pesquisaridade="ngForm">
+                        <div class="input-group mb-3">
+                            <input pattern="[0-9]+$" type="text" name="idade" [(ngModel)]="idade" class="form-control"
+                                placeholder="Idade...">
+                            <div class="input-group-append">
+                                <button [disabled]="!pesquisaridade.valid" (click)="PesquisarPessoasIdade()"
+                                    class="btn btn-outline-secondary" type="submit"
+                                    id="button-addon2">Pesquisar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <table class="table table-hover">
@@ -25,16 +47,12 @@
                         <td>{{pessoa.nome}}</td>
                         <td>{{pessoa.idade}}</td>
                         <td>
-                            <button (click)="Editar(pessoa)" class="btn btn-warning" style="margin: 5px">Atualizar</button>
-                            <button style="margin-left: 10px;"
-                            mwlConfirmationPopover
-                            [popoverTitle]="popoverTitle"
-                            [popoverMessage]="popoverMessage"
-                            placement="left"
-                            (confirm)="Deletar(pessoa)"
-                            (cancel)="cancelClicked = true"
-                            class="btn btn-danger"> 
-                            Apagar</button>
+                            <button (click)="Editar(pessoa)" class="btn btn-warning"
+                                style="margin: 5px">Atualizar</button>
+                            <button style="margin-left: 10px;" mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                                [popoverMessage]="popoverMessage" placement="left" (confirm)="Deletar(pessoa)"
+                                (cancel)="cancelClicked = true" class="btn btn-danger">
+                                Apagar</button>
                         </td>
                     </tr>
                 </tbody>

@@ -11,23 +11,23 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CadastrarComponent implements OnInit {
 
-  pessoa:Pessoa=new Pessoa();
+  pessoa: Pessoa = new Pessoa();
 
-  constructor(private router:Router, private service:ServiceService, private toastr: ToastrService) { }
+  constructor(private router: Router, private service: ServiceService, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
 
-  Cadastrar(nome:String, idade:number){
+  Cadastrar(nome: String, idade: number) {
     this.pessoa.nome = nome;
     this.pessoa.idade = idade;
 
     this.service.cadastrarPessoas(this.pessoa)
-    .subscribe(data=>{
-      this.toastr.success('Cadastro Feito com Sucesso !') 
-      this.router.navigate(["listar"]);
-    })
-    
+      .subscribe(data => {
+        this.toastr.success('Cadastro Feito com Sucesso !')
+        this.router.navigate(["listar"]);
+      })
+
   }
 
 }

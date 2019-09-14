@@ -11,27 +11,27 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListarComponent implements OnInit {
 
-  pessoas:Pessoa[];
-  constructor(private service:ServiceService, private router:Router, private toastr: ToastrService) { }
+  pessoas: Pessoa[];
+  constructor(private service: ServiceService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.service.getPessoas()
-    .subscribe(data=>{ 
-      this.pessoas=data; 
-    })
+      .subscribe(data => {
+        this.pessoas = data;
+      })
   }
 
-  Editar(pessoa:Pessoa):void{
-    localStorage.setItem("id",pessoa.id.toString());
+  Editar(pessoa: Pessoa): void {
+    localStorage.setItem("id", pessoa.id.toString());
     this.router.navigate(["editar"]);
   }
 
-  Deletar(pessoa:Pessoa){
+  Deletar(pessoa: Pessoa) {
     this.service.deletarPessoas(pessoa)
-    .subscribe(data=>{
-      this.pessoas=this.pessoas.filter(p=>p!==pessoa);
-      this.toastr.success(pessoa.nome + ' Excluído(a) Com Sucesso !');
-    })
+      .subscribe(data => {
+        this.pessoas = this.pessoas.filter(p => p !== pessoa);
+        this.toastr.success(pessoa.nome + ' Excluído(a) Com Sucesso !');
+      })
   }
 
 

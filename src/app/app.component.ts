@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Pessoa } from './Modelo/Pessoa';
 import { ServiceService } from './Service/service.service';
 
 @Component({
@@ -9,25 +8,23 @@ import { ServiceService } from './Service/service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'exemplo1';
 
 
-  constructor(private router:Router, private serviceService: ServiceService){}
+  constructor(private router: Router, private serviceService: ServiceService) { }
 
-  
-  Listar(){
+  Listar() {
     this.router.navigate(["listar"]);
   }
 
-  Novo(){
+  Novo() {
     this.router.navigate(["cadastrar"]);
   }
 
-  Editar(){
+  Editar() {
     this.router.navigate(["editar"]);
   }
 
-  Pesquisar(){
+  Pesquisar() {
     this.router.navigate(["pesquisar"]);
   }
 

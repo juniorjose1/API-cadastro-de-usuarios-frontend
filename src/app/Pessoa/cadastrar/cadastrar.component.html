@@ -4,46 +4,45 @@
             <h3>Cadastrar Pessoa</h3>
         </div>
         <div class="card-body">
-            <form #f="ngForm" action="">
+            <form #f="ngForm">
                 <div class="form-grupo">
                     <label for="nome">Nome:</label>
-                    <input  type="text" class="form-control" [(ngModel)]="pessoa.nome" 
-                    name="nome" #nome="ngModel" minlength="3"
-                    pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required/>
+                    <input type="text" class="form-control" [(ngModel)]="pessoa.nome" name="nome" #nome="ngModel"
+                        minlength="3" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required />
                     <span class="help-block" *ngIf="!nome.valid && nome.touched">
                         <ul>
                             <li *ngIf="nome.errors.required" style="color: red">
-                                Nome é obrigatório.      
+                                Nome é obrigatório.
                             </li>
                             <li *ngIf="nome.errors.pattern" style="color: red">
-                                Somente Letras.    
+                                Somente Letras.
                             </li>
                             <li *ngIf="nome.errors.minlength" style="color: red">
-                                Mínimo de 3 caracteres.    
+                                Mínimo de 3 caracteres.
                             </li>
                         </ul>
-                    </span>   
+                    </span>
                 </div>
-                
+
                 <br>
                 <div class="form-grupo">
                     <label for="idade">Idade:</label>
-                    <input type="text" class="form-control" [(ngModel)]="pessoa.idade"
-                    name="idade" #idade="ngModel" pattern="[0-9]+$" required/> 
+                    <input type="text" class="form-control" [(ngModel)]="pessoa.idade" name="idade" #idade="ngModel"
+                        pattern="[0-9]+$" required />
                     <span class="help-block" *ngIf="!idade.valid && idade.touched">
                         <ul>
                             <li *ngIf="idade.errors.required" style="color: red">
-                                Nome é obrigatório.      
+                                Idade é obrigatório.
                             </li>
                             <li *ngIf="!idade.valid" style="color: red">
-                                Somente Números.    
+                                Somente Números.
                             </li>
                         </ul>
-                    </span>        
+                    </span>
                 </div>
                 <br>
-                <button (click)="Cadastrar(nome.value,idade.value)" 
-                class="btn btn-danger" type="submit" [disabled]="!f.valid">Cadastrar</button>
+                <button (click)="Cadastrar(nome.value,idade.value)" class="btn btn-danger" type="submit"
+                    [disabled]="!f.valid">Cadastrar</button>
             </form>
         </div>
     </div>
