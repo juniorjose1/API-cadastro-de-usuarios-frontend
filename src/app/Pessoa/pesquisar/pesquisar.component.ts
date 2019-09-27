@@ -38,7 +38,7 @@ export class PesquisarComponent implements OnInit {
     this.serviceService.deletarPessoas(pessoa)
       .subscribe(data => {
         this.pessoas = this.pessoas.filter(p => p !== pessoa);
-        this.toastr.success(pessoa.nome + ' Excluído(a) Com Sucesso !');
+        this.toastr.success(pessoa.nome + ' foi Excluído(a) com Sucesso !');
       })
   }
 

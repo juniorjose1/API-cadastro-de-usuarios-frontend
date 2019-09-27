@@ -30,10 +30,15 @@ export class ListarComponent implements OnInit {
     this.service.deletarPessoas(pessoa)
       .subscribe(data => {
         this.pessoas = this.pessoas.filter(p => p !== pessoa);
-        this.toastr.success(pessoa.nome + ' Excluído(a) Com Sucesso !');
+        this.toastr.success(pessoa.nome + ' foi Excluído(a) com Sucesso !');
       })
   }
 
-
-
+  gerar(){
+    this.service.relatorioPessoas()
+    .then(relatorio => {
+      const url = window.URL.createObjectURL(relatorio); 
+      window.open(url);   
+    })
+  }
 }

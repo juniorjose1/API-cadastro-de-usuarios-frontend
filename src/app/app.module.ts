@@ -14,6 +14,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { PesquisarComponent } from './Pessoa/pesquisar/pesquisar.component';
 import { RouterModule, Routes } from '@angular/router';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import {InputTextModule} from 'primeng/inputtext';
 
 const routes: Routes = [
 
@@ -34,7 +37,10 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    TableModule,
+    ButtonModule,
     HttpClientModule,
+    InputTextModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 5000,
@@ -43,7 +49,7 @@ const routes: Routes = [
     }),
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger',
-      confirmText: 'Apagar',
+      confirmText: '<i class="fas fa-user-times"></i> Apagar',
       cancelText: 'Cancelar',
       popoverTitle: 'Deletar Pessoa',
       popoverMessage: 'Tem certeza de que deseja excluir a pessoa selecionada?'

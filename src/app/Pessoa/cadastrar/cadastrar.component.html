@@ -34,15 +34,15 @@
                             <li *ngIf="idade.errors.required" style="color: red">
                                 Idade é obrigatório.
                             </li>
-                            <li *ngIf="!idade.valid" style="color: red">
+                            <li *ngIf="idade.errors.pattern" style="color: red">
                                 Somente Números.
                             </li>
                         </ul>
                     </span>
                 </div>
                 <br>
-                <button (click)="Cadastrar(nome.value,idade.value)" class="btn btn-danger" type="submit"
-                    [disabled]="!f.valid">Cadastrar</button>
+                <button (click)="Cadastrar(nome.value,idade.value)" class="btn btn-primary" type="submit"
+                    [disabled]="!f.valid"><i class="fas fa-user-plus"></i> Cadastrar</button>
             </form>
         </div>
     </div>

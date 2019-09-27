@@ -61,4 +61,10 @@ export class ServiceService {
 
   }
 
+  relatorioPessoas(){
+    return this.http.get(`${this.Url}/relatorio`, {responseType: "blob"})
+    .toPromise()
+    .then(response => response);
+  }
+
 }
