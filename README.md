@@ -8,7 +8,9 @@ Cadastrar: OK | Alterar: OK
 
 Excluir: OK | Pesquisar: OK
 
-Listar: OK | Exportar em PDF: Em Desenvolvimento
+Listar: OK | Exportar em PDF: OK
+
+API FINALIZADA !
 
 
 
