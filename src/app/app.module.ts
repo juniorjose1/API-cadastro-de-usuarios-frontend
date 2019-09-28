@@ -17,6 +17,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
+import { VerificarSegurancaComponent } from './Pessoa/verificar-seguranca/verificar-seguranca.component';
 
 const routes: Routes = [
 
@@ -30,7 +31,8 @@ const routes: Routes = [
     ListarComponent,
     CadastrarComponent,
     EditarComponent,
-    PesquisarComponent
+    PesquisarComponent,
+    VerificarSegurancaComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

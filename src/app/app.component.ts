@@ -28,8 +28,10 @@ export class AppComponent {
     this.router.navigate(["pesquisar"]);
   }
 
-  Exportar() {
-    this.router.navigate(["exportar"]);
+  VerificarSeguranca(){
+    this.router.navigate(["verificarseguranca"]);
   }
+
+
 
 }

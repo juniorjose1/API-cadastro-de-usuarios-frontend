@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Todas as Pessoas 
+            <button (click)="gerar()" class="btn btn-primary">
+                <i class="fas fa-download"></i>  Exportar Lista</button></h3>
+        </div>
+        <div class="card-body">
+            <p-table [value]="pessoas" [paginator]="true" [rows]=10>
+                <ng-template pTemplate="header">
+                    <tr class = "text-center">
+                        <th>ID</th>
+                        <th>NOME</th>
+                        <th>IDADE</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-pessoa>
+                    <tr class = "text-center">
+                        <td>{{pessoa.id}}</td>
+                        <td>{{pessoa.nome}}</td>
+                        <td>{{pessoa.idade}}</td>
+                        <td>
+                            <button (click)="Editar(pessoa)" class="btn btn-warning"
+                                style="margin: 5px"><i class="fas fa-edit"></i> Atualizar</button>
+                            <button style="margin-left: 10px;" mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                                [popoverMessage]="popoverMessage" placement="left" (confirm)="Deletar(pessoa)"
+                                (cancel)="cancelClicked = true" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i> Apagar</button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
