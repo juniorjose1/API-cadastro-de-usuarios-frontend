@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Pessoa } from '../Modelo/Pessoa';
+import { environment } from 'src/environments/environment.prod';
 
 export interface PessoaFiltroNome {
   nome: string;
@@ -11,9 +12,13 @@ export interface PessoaFiltroNome {
 })
 export class ServiceService {
 
-  constructor(private http: HttpClient) { }
+  Url: string;
 
-  Url = 'http://localhost:8080/pessoas';
+  constructor(private http: HttpClient) {
+    this.Url = environment.apiUrl;
+   }
+
+  
 
   getPessoaSemAutenticacao(){
     return this.http.get<Pessoa[]>(this.Url);
