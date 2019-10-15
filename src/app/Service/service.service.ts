@@ -15,7 +15,7 @@ export class ServiceService {
   Url: string;
 
   constructor(private http: HttpClient) {
-    this.Url = environment.apiUrl;
+    this.Url = `${environment.apiUrl}/pessoas`;
    }
 
   
