@@ -24,7 +24,7 @@ export class CadastrarComponent implements OnInit {
 
     this.service.cadastrarPessoas(this.pessoa)
       .subscribe(data => {
-        this.toastr.success('Cadastro Feito com Sucesso !')
+        this.toastr.success('Cadastro Feito com Sucesso !!')
         this.router.navigate(["listar"]);
       })
 
