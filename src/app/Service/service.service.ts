@@ -38,20 +38,19 @@ export class ServiceService {
   getPessoaId(id: number) {
     const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
 
-    return this.http.get<Pessoa>(this.Url + id, {headers});
+    return this.http.get<Pessoa>(this.Url + "/" + id, {headers});
   }
 
   atualizarPessoas(pessoa: Pessoa) {
     const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
 
-    return this.http.put<Pessoa>(this.Url + pessoa.id, pessoa, {headers});
+    return this.http.put<Pessoa>(this.Url + "/" + pessoa.id, pessoa, {headers});
   }
 
   deletarPessoas(pessoa: Pessoa) {
     const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
 
-    //return this.http.delete<Pessoa[]>(this.Url + "/" + pessoa.id, {headers});
-    return this.http.delete<Pessoa[]>(this.Url + pessoa.id, {headers});
+    return this.http.delete<Pessoa[]>(this.Url + "/" + pessoa.id, {headers});
   }
 
   pesquisarNome(filtroNome: PessoaFiltroNome): Promise<any> {
@@ -88,13 +87,13 @@ export class ServiceService {
   relatorioPessoas(){
     const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
 
-    return this.http.get(`${this.Url}relatorio`, {responseType: "blob", headers})
+    return this.http.get(`${this.Url}/relatorio`, {responseType: "blob", headers})
     .toPromise()
     .then(response => response);
   }
 
   relatorioPessoaSemAutenticacao(){
-    return this.http.get(`${this.Url}relatorio`, {responseType: "blob"})
+    return this.http.get(`${this.Url}/relatorio`, {responseType: "blob"})
     .toPromise()
     .then(response => response);
   }
