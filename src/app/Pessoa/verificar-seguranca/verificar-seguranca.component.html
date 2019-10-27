@@ -12,6 +12,7 @@
                         <th>ID</th>
                         <th>NOME</th>
                         <th>IDADE</th>
+                        <th>SEXO</th>
                         <th>AÇÕES</th>
                     </tr>
                 </ng-template>
@@ -20,6 +21,7 @@
                         <td>{{pessoa.id}}</td>
                         <td>{{pessoa.nome}}</td>
                         <td>{{pessoa.idade}}</td>
+                        <td>{{pessoa.sexo}}</td>
                         <td>
                             <button (click)="Editar(pessoa)" class="btn btn-warning"
                                 style="margin: 5px"><i class="fas fa-edit"></i> Atualizar</button>

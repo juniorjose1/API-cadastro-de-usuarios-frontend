@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Pessoa } from '../Modelo/Pessoa';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 export interface PessoaFiltroNome {
   nome: string;
@@ -17,8 +17,6 @@ export class ServiceService {
   constructor(private http: HttpClient) {
     this.Url = `${environment.apiUrl}/pessoas`;
    }
-
-  
 
   getPessoaSemAutenticacao(){
     return this.http.get<Pessoa[]>(this.Url);
@@ -68,6 +66,22 @@ export class ServiceService {
       .then(response =>
         response);
   }
+
+  pesquisarSexo(filtroSexo: any): Promise<any> {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
+    
+    let params = new HttpParams();
+
+    if (filtroSexo.sexo) {
+      params = params.set('sexo', filtroSexo.sexo);
+    }
+
+    return this.http.get(`${this.Url}`, { headers, params })
+      .toPromise()
+      .then(response =>
+        response);
+  }
+  
 
   pesquisarIdade(filtroIdade: any): Promise<any> {
     

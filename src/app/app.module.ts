@@ -16,8 +16,9 @@ import { PesquisarComponent } from './Pessoa/pesquisar/pesquisar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import {InputTextModule} from 'primeng/inputtext';
+import { InputTextModule } from 'primeng/inputtext';
 import { VerificarSegurancaComponent } from './Pessoa/verificar-seguranca/verificar-seguranca.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 const routes: Routes = [
 
@@ -38,6 +39,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
+    DropdownModule,
     FormsModule,
     TableModule,
     ButtonModule,

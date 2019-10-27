@@ -13,6 +13,8 @@ export class PesquisarComponent implements OnInit {
   pessoas: Pessoa[];
   nome: string;
   idade: number;
+  sexo: string;
+
   constructor(private serviceService: ServiceService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -26,6 +28,11 @@ export class PesquisarComponent implements OnInit {
 
   PesquisarPessoasIdade() {
     this.serviceService.pesquisarIdade({ idade: this.idade })
+      .then(pessoas => this.pessoas = pessoas);
+  }
+
+  PesquisarPessoasSexo() {
+    this.serviceService.pesquisarSexo({ sexo: this.sexo })
       .then(pessoas => this.pessoas = pessoas);
   }
 

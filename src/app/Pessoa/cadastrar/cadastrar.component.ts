@@ -3,24 +3,29 @@ import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
 import { Pessoa } from 'src/app/Modelo/Pessoa';
 import { ToastrService } from 'ngx-toastr';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-cadastrar',
   templateUrl: './cadastrar.component.html',
   styleUrls: ['./cadastrar.component.css']
 })
+
+
 export class CadastrarComponent implements OnInit {
 
   pessoa: Pessoa = new Pessoa();
 
+    
   constructor(private router: Router, private service: ServiceService, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
 
-  Cadastrar(nome: String, idade: number) {
+  Cadastrar(nome: String, idade: number, sexo:String) {
     this.pessoa.nome = nome;
     this.pessoa.idade = idade;
+    this.pessoa.sexo = sexo;
 
     this.service.cadastrarPessoas(this.pessoa)
       .subscribe(data => {

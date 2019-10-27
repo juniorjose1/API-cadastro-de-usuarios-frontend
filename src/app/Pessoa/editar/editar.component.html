@@ -24,21 +24,34 @@
                     </span>
                 </div>
                 <br>
-                <div class="form-grupo">
-                    <label for="idade">Idade:</label>
-                    <input [(ngModel)]="pessoa.idade" name="idade" type="text" class="form-control" #idade="ngModel"
-                        pattern="[0-9]+$" required />
-                    <span class="help-block" *ngIf="!idade.valid && idade.touched">
-                        <ul>
-                            <li *ngIf="idade.errors.required" style="color: red">
-                                Idade é obrigatório.
-                            </li>
-                            <li *ngIf="!idade.valid" style="color: red">
-                                Somente Números.
-                            </li>
-                        </ul>
-                    </span>
-                </div>
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-grupo">
+                                <label for="idade">Idade:</label>
+                                <input type="text" class="form-control" [(ngModel)]="pessoa.idade" name="idade" #idade="ngModel"
+                                    pattern="[0-9]+$" required />
+                                <span class="help-block" *ngIf="!idade.valid && idade.touched">
+                                    <ul>
+                                        <li *ngIf="idade.errors.required" style="color: red">
+                                            Idade é obrigatório.
+                                        </li>
+                                        <li *ngIf="idade.errors.pattern" style="color: red">
+                                            Somente Números.
+                                        </li>
+                                    </ul>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                                <div class="form-grupo">
+                                    <label for="sexo">Sexo:</label>   
+                                </div>     
+                                <select class="custom-select" id="inputListar" aria-label="Lista as opcoes" [(ngModel)]="pessoa.sexo" name="sexo" #sexo="ngModel">
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Feminino">Feminino</option>
+                                </select>
+                        </div>            
+                    </div>
                 <br>
                 <button (click)="Atualizar(pessoa)" class="btn btn-warning" [disabled]="!f.valid"
                     type="submit"><i class="fas fa-edit"></i> Atualizar</button>
