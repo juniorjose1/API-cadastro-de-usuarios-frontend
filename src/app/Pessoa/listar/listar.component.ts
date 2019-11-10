@@ -13,7 +13,7 @@ import { ConfirmationService } from 'primeng/api';
 })
 export class ListarComponent implements OnInit {
 
-  mensagemConfirmacao: any;
+  msgs: any;
 
   pessoas: Pessoa[];
   constructor(private confirmationService: ConfirmationService, private service: ServiceService, private router: Router, private toastr: ToastrService) { }
@@ -47,7 +47,7 @@ export class ListarComponent implements OnInit {
         rejectLabel: 'Não',
         accept: () => {
             this.service.deletarTudo().subscribe(data => {this.pessoas = data});
-            this.mensagemConfirmacao = [{severity:'success', summary:'Todos os convidados', detail:'foram excluídos com sucesso !'}];
+            this.msgs = [{severity:'success', summary:'Todos os convidados', detail:'foram excluídos com sucesso !'}];
         }
     });
 }
