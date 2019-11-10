@@ -1,6 +1,7 @@
 export class Pessoa{
     id:number;
     nome:String;
-    idade:number;
+    idade:String;
     sexo:String;
+    grupo:String;
 }

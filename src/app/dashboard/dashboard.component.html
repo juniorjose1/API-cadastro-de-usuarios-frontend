@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header" style="text-align: center;">
+            <h3>Estatísticas dos Convidados <i class="fas fa-chart-pie"></i></h3>
+            <h6>Para realizar uma comparação direta, clique em cima de um campo para ocultá-lo do gráfico</h6>    
+        </div>
+        <div class="card-body">
+
+                <div class="ui-g-12 ui-md-2">
+                
+                </div>
+    
+                <div class="ui-g-12 ui-md-8">
+                    <p-panel header="Quantas Pessoas Convidei ?">
+                           <div style="text-align: center;"> 
+                            <circle-progress 
+                            [percent]="barraTotal"
+                            [radius]="100"
+                            [maxPercent]="barraTotal"
+                            [outerStrokeWidth]="0"
+                            [innerStrokeWidth]="35"
+                            [outerStrokeColor]="'#17A2B8'"
+                            [innerStrokeColor]="'#17A2B8'"
+                            [animation]="true"
+                            [animationDuration]="500"
+                            ></circle-progress>
+                            </div>
+                    </p-panel>
+                </div>
+    
+                <div class="ui-g-12 ui-md-2">
+                    
+                </div>
+            
+            <div class="ui-g-12 ui-md-6">
+                <p-panel header="Quantidade de Convidados Por Gênero">
+                    <p-chart type="pie" [data]="pieChartData"></p-chart>
+                </p-panel>
+            </div>
+
+            <div class="ui-g-12 ui-md-6">
+                <p-panel header="Quantidade de Convidados Por Faixa Etária">
+                    <p-chart type="pie" [data]="pieChartData2"></p-chart>
+                </p-panel>
+            </div>
+
+            <div class="ui-g-12 ui-md-2">
+                
+            </div>
+
+            <div class="ui-g-12 ui-md-8">
+                <p-panel header="Quantidade de Convidados Por Grupo">
+                    <p-chart type="doughnut" [data]="doughnutChartData"></p-chart>
+                </p-panel>
+            </div>
+
+            <div class="ui-g-12 ui-md-2">
+                
+            </div>
+
+        </div>
+    </div>
+</div>

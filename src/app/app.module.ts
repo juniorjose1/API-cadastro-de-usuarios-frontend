@@ -19,6 +19,12 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { VerificarSegurancaComponent } from './Pessoa/verificar-seguranca/verificar-seguranca.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PanelModule } from 'primeng/panel';
+import { ChartModule } from 'primeng/chart';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessagesModule } from 'primeng/messages';
 
 const routes: Routes = [
 
@@ -34,18 +40,36 @@ const routes: Routes = [
     EditarComponent,
     PesquisarComponent,
     VerificarSegurancaComponent,
+    DashboardComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
+    MessagesModule,
+    ConfirmDialogModule,
     AppRoutingModule,
     DropdownModule,
     FormsModule,
     TableModule,
+    ChartModule,
+    PanelModule,
     ButtonModule,
     HttpClientModule,
     InputTextModule,
     BrowserAnimationsModule,
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+      subtitle: 'Convidados',
+      showUnits: false,
+      titleFontSize: '40',
+      subtitleFontSize: '17',
+      subtitleColor: 'black',
+    }),
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-top-right',
@@ -55,8 +79,8 @@ const routes: Routes = [
       confirmButtonType: 'danger',
       confirmText: '<i class="fas fa-user-times"></i> Apagar',
       cancelText: 'Cancelar',
-      popoverTitle: 'Deletar Pessoa',
-      popoverMessage: 'Tem certeza de que deseja excluir a pessoa selecionada?'
+      popoverTitle: 'Deletar Convidado(a)',
+      popoverMessage: 'Tem certeza de que deseja excluir o convidado selecionado?'
     })
   ],
   providers: [ServiceService],

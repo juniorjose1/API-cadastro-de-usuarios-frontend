@@ -5,13 +5,15 @@ import { CadastrarComponent } from './Pessoa/cadastrar/cadastrar.component';
 import { EditarComponent } from './Pessoa/editar/editar.component';
 import { PesquisarComponent } from './Pessoa/pesquisar/pesquisar.component';
 import { VerificarSegurancaComponent } from './Pessoa/verificar-seguranca/verificar-seguranca.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 const routes: Routes = [
   {path:'listar', component:ListarComponent},
   {path:'cadastrar', component:CadastrarComponent},
   {path:'editar', component:EditarComponent},
   {path:'pesquisar', component:PesquisarComponent},
-  {path: 'verificarseguranca', component:VerificarSegurancaComponent}
+  {path: 'verificarseguranca', component:VerificarSegurancaComponent},
+  {path: 'dashboard', component:DashboardComponent}
 ];
 
 @NgModule({

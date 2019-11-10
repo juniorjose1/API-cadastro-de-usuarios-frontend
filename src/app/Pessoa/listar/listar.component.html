@@ -1,38 +1,50 @@
 <div class="container">
     <div class="card">
-        <div class="card-header">
-            <h3>Todas as Pessoas 
-            <button (click)="gerar()" class="btn btn-primary">
-                <i class="fas fa-download"></i>  Exportar Lista</button></h3>
+        <div class="card-header" style="text-align: center;">
+            <h3>Todos os Convidados <img src="http://alejunqueira.com.br/img/icone-convidados.png">
+            </h3>
         </div>
         <div class="card-body">
             <p-table [value]="pessoas" [paginator]="true" [rows]=10>
                 <ng-template pTemplate="header">
                     <tr class = "text-center">
-                        <th>ID</th>
                         <th>NOME</th>
-                        <th>IDADE</th>
-                        <th>SEXO</th>
+                        <th>GÊNERO</th>
+                        <th>FAIXA ETÁRIA</th>
+                        <th>GRUPO</th>
                         <th>AÇÕES</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-pessoa>
                     <tr class = "text-center">
-                        <td>{{pessoa.id}}</td>
                         <td>{{pessoa.nome}}</td>
-                        <td>{{pessoa.idade}}</td>
                         <td>{{pessoa.sexo}}</td>
+                        <td>{{pessoa.idade}}</td>
+                        <td>{{pessoa.grupo}}</td>
                         <td>
-                            <button (click)="Editar(pessoa)" class="btn btn-warning"
-                                style="margin: 5px"><i class="fas fa-edit"></i> Atualizar</button>
-                            <button style="margin-left: 10px;" mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                            <button style="width:97px; margin-bottom: 2%; font-size: 15px;" (click)="Editar(pessoa)" class="btn btn-warning"
+                                ><i class="fas fa-edit"></i> Editar</button>
+                            <button mwlConfirmationPopover [popoverTitle]="popoverTitle"
                                 [popoverMessage]="popoverMessage" placement="left" (confirm)="Deletar(pessoa)"
-                                (cancel)="cancelClicked = true" class="btn btn-danger">
+                                (cancel)="cancelClicked = true" style="width:97px; font-size: 15px;" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i> Apagar</button>
                         </td>
                     </tr>
                 </ng-template>
+                <ng-template pTemplate="emptymessage">
+                        <tr>        
+                            <td>Nenhum Convidado Encontrado !</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </ng-template>         
             </p-table>
+            <div style="margin-top: 15px;"><p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+                <button type="button" (click)="confirmacaoDeletarTudo()" pButton icon="fas fa-user-times" class="ui-button-danger" label="Apagar Tudo"></button>
+                <p-messages [value]="msgs"></p-messages>
+            </div>
         </div>
     </div>
 </div>

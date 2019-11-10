@@ -1,59 +1,85 @@
 <div class="container col-md-6">
     <div class="card">
-        <div class="card-header">
-            <h3>Cadastrar Pessoa</h3>
+        <div class="card-header" style="text-align: center;">
+            <h3>Cadastrar Convidado <i class="fas fa-user-friends"></i></h3>
         </div>
         <div class="card-body">
-            <form #f="ngForm">
-                <div class="form-grupo">
-                    <label for="nome">Nome:</label>
-                    <input type="text" class="form-control" [(ngModel)]="pessoa.nome" name="nome" #nome="ngModel"
-                        minlength="3" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required />
-                    <span class="help-block" *ngIf="!nome.valid && nome.touched">
-                        <ul>
-                            <li *ngIf="nome.errors.required" style="color: red">
-                                Nome é obrigatório.
-                            </li>
-                            <li *ngIf="nome.errors.pattern" style="color: red">
-                                Somente Letras.
-                            </li>
-                            <li *ngIf="nome.errors.minlength" style="color: red">
-                                Mínimo de 3 caracteres.
-                            </li>
-                        </ul>
-                    </span>
+            <form #f="ngForm">    
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-grupo">
+                            <label for="nome">Nome:</label>
+                            <input type="text" class="form-control" [(ngModel)]="pessoa.nome" name="nome" #nome="ngModel"
+                            minlength="3" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required />
+                            <span class="help-block" *ngIf="!nome.valid && nome.touched">
+                                <ul>
+                                    <li *ngIf="nome.errors.required" style="color: red">
+                                        Nome é obrigatório.
+                                    </li>
+                                    <li *ngIf="nome.errors.pattern" style="color: red">
+                                        Somente Letras.
+                                    </li>
+                                    <li *ngIf="nome.errors.minlength" style="color: red">
+                                        Mínimo de 3 caracteres.
+                                    </li>
+                                </ul>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-grupo">
+                            <label for="sexo">Gênero:</label>   
+                        </div>     
+                        <select class="custom-select" id="inputListarSexo" aria-label="Lista as opcoes sexo" [(ngModel)]="sexoSelecionado.sexo" name="sexo" #sexo="ngModel" required>
+                                <option value="">Selecionar...</option>
+                                <option *ngFor="let sexoSelecionado1 of genero" value="{{sexoSelecionado1}}">{{sexoSelecionado1}}</option>
+                        </select>
+                        <span class="help-block" *ngIf="!sexo.valid && sexo.touched">
+                                <ul>
+                                    <li *ngIf="sexo.errors.required" style="color: red">
+                                        Obrigatório
+                                    </li>
+                                </ul>
+                        </span>    
+                    </div>
                 </div>
                 <br>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-grupo">
-                                <label for="idade">Idade:</label>
-                                <input type="text" class="form-control" [(ngModel)]="pessoa.idade" name="idade" #idade="ngModel"
-                                    pattern="[0-9]+$" required />
+                                <label for="idade">Faixa Etária:</label>   
+                            </div>     
+                                <select class="custom-select" id="inputListarIdade" aria-label="Lista as opcoes idade" [(ngModel)]="idadeSelecionada.idade" name="idade" #idade="ngModel" required>
+                                        <option value="">Selecionar...</option>
+                                        <option *ngFor="let idadeSelecionada1 of faixaEtaria" value="{{idadeSelecionada1}}">{{idadeSelecionada1}}</option>
+                                </select>
                                 <span class="help-block" *ngIf="!idade.valid && idade.touched">
-                                    <ul>
-                                        <li *ngIf="idade.errors.required" style="color: red">
-                                            Idade é obrigatório.
-                                        </li>
-                                        <li *ngIf="idade.errors.pattern" style="color: red">
-                                            Somente Números.
-                                        </li>
-                                    </ul>
-                                </span>
-                            </div>
+                                        <ul>
+                                            <li *ngIf="idade.errors.required" style="color: red">
+                                                Obrigatório
+                                            </li>
+                                        </ul>
+                                </span>    
                         </div>
                         <div class="col-md-6">
                                 <div class="form-grupo">
-                                    <label for="sexo">Sexo:</label>   
+                                    <label for="grupo">Grupo:</label>   
                                 </div>     
-                                <select class="custom-select" id="inputListar" aria-label="Lista as opcoes" [(ngModel)]="pessoa.sexo" name="sexo" #sexo="ngModel">
-                                    <option value="Masculino">Masculino</option>
-                                    <option value="Feminino">Feminino</option>
+                                <select class="custom-select" id="inputListarGrupo" aria-label="Lista as opcoes grupo" [(ngModel)]="grupoSelecionado.grupo" name="grupo" #grupo="ngModel" required>
+                                        <option value="">Selecionar...</option>
+                                        <option *ngFor="let grupoSelecionado1 of grupoCasamento" value="{{grupoSelecionado1}}">{{grupoSelecionado1}}</option>
                                 </select>
+                                <span class="help-block" *ngIf="!grupo.valid && grupo.touched">
+                                        <ul>
+                                            <li *ngIf="grupo.errors.required" style="color: red">
+                                                Obrigatório
+                                            </li>
+                                        </ul>
+                                </span>    
                         </div>            
                     </div>        
                 <br>
-                <button (click)="Cadastrar(nome.value,idade.value,sexo.value)" class="btn btn-primary" type="submit"
+                <button (click)="Cadastrar(nome.value,idade.value,sexo.value,grupo.value)" class="btn btn-primary" type="submit"
                     [disabled]="!f.valid"><i class="fas fa-user-plus"></i> Cadastrar</button>
             </form>
         </div>

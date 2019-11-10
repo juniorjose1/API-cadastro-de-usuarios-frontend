@@ -10,7 +10,7 @@ import { ServiceService } from './Service/service.service';
 export class AppComponent {
 
 
-  constructor(private router: Router, private serviceService: ServiceService) { }
+  constructor(private router: Router, private service: ServiceService) { }
 
   Listar() {
     this.router.navigate(["listar"]);
@@ -30,6 +30,18 @@ export class AppComponent {
 
   VerificarSeguranca(){
     this.router.navigate(["verificarseguranca"]);
+  }
+
+  Dashboard(){
+    this.router.navigate(["dashboard"]);
+  }
+
+  Gerar(){
+    this.service.relatorioPessoas()
+    .then(relatorio => {
+      const url = window.URL.createObjectURL(relatorio); 
+      window.open(url);   
+    })
   }
 
 

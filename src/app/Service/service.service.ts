@@ -98,6 +98,21 @@ export class ServiceService {
 
   }
 
+  pesquisarGrupo(filtroGrupo: any): Promise<any> {
+    
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
+
+    let params = new HttpParams();
+
+    if (filtroGrupo.grupo) {
+      params = params.set('grupo', filtroGrupo.grupo);
+    }  
+
+    return this.http.get(`${this.Url}`, { headers, params })
+      .toPromise().then(response => response);
+
+  }
+
   relatorioPessoas(){
     const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
 
@@ -111,5 +126,45 @@ export class ServiceService {
     .toPromise()
     .then(response => response);
   }
+
+  pessoasPorSexo(): Promise<any> {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
+
+    return this.http.get(`${this.Url}/estatisticas/por-sexo`, {headers})
+      .toPromise()
+      .then(response => response);
+  }
+
+  pessoasPorIdade(): Promise<any> {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
+
+    return this.http.get(`${this.Url}/estatisticas/por-idade`, {headers})
+      .toPromise()
+      .then(response => response);
+  }
+
+  pessoasPorGrupo(): Promise<any> {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
+
+    return this.http.get(`${this.Url}/estatisticas/por-grupo`, {headers})
+      .toPromise()
+      .then(response => response);
+  }
+
+  pessoasTotal(): Promise<any> {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
+    
+    return this.http.get(`${this.Url}/estatisticas/total`, {headers})
+      .toPromise()
+      .then(response => response);
+  }
+
+  deletarTudo() {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
+
+    return this.http.delete<Pessoa[]>(this.Url, {headers});
+  }
+
+  
 
 }

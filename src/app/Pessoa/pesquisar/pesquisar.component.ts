@@ -4,6 +4,18 @@ import { Pessoa } from 'src/app/Modelo/Pessoa';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
+class Genero{
+  constructor(public nome: string) { }
+}
+
+class Idade{
+  constructor(public nome: string) { }
+}
+
+class Grupo{
+  constructor(public nome: string) { }
+}
+
 @Component({
   selector: 'app-pesquisar',
   templateUrl: './pesquisar.component.html',
@@ -12,10 +24,21 @@ import { ToastrService } from 'ngx-toastr';
 export class PesquisarComponent implements OnInit {
   pessoas: Pessoa[];
   nome: string;
-  idade: number;
+  idade: string;
   sexo: string;
+  grupo: string;
+  tudo: string;
 
-  constructor(private serviceService: ServiceService, private router: Router, private toastr: ToastrService) { }
+  genero = ['Homem', 'Mulher']
+  sexoSelecionado: Genero = new Genero('');
+
+  faixaEtaria = ['Adulto', 'Criança/Adolescente', 'Bebê']
+  idadeSelecionada: Idade = new Idade('');
+
+  grupoCasamento = ['Amigos do Noivo', 'Família do Noivo', 'Amigos da Noiva', 'Família da Noiva', 'Amigos em Comum']
+  grupoSelecionado: Grupo = new Grupo('');
+
+  constructor(private serviceService: ServiceService, private router: Router, private toastr: ToastrService) {  }
 
   ngOnInit() {
     this.PesquisarPessoasNome();
@@ -27,12 +50,17 @@ export class PesquisarComponent implements OnInit {
   }
 
   PesquisarPessoasIdade() {
-    this.serviceService.pesquisarIdade({ idade: this.idade })
+    this.serviceService.pesquisarIdade({ idade: this.idadeSelecionada.nome })
       .then(pessoas => this.pessoas = pessoas);
   }
 
   PesquisarPessoasSexo() {
-    this.serviceService.pesquisarSexo({ sexo: this.sexo })
+    this.serviceService.pesquisarSexo({ sexo: this.sexoSelecionado.nome })
+      .then(pessoas => this.pessoas = pessoas);
+  }
+
+  PesquisarPessoasGrupo() {
+    this.serviceService.pesquisarGrupo({ grupo: this.grupoSelecionado.nome })
       .then(pessoas => this.pessoas = pessoas);
   }
 

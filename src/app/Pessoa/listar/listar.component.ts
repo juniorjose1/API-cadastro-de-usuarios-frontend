@@ -3,16 +3,20 @@ import { Router } from '@angular/router';
 import { ServiceService } from '../../Service/service.service'
 import { Pessoa } from 'src/app/Modelo/Pessoa';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-listar',
   templateUrl: './listar.component.html',
-  styleUrls: ['./listar.component.css']
+  styleUrls: ['./listar.component.css'],
+  providers: [ConfirmationService]
 })
 export class ListarComponent implements OnInit {
 
+  mensagemConfirmacao: any;
+
   pessoas: Pessoa[];
-  constructor(private service: ServiceService, private router: Router, private toastr: ToastrService) { }
+  constructor(private confirmationService: ConfirmationService, private service: ServiceService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.service.getPessoas()
@@ -34,11 +38,19 @@ export class ListarComponent implements OnInit {
       })
   }
 
-  gerar(){
-    this.service.relatorioPessoas()
-    .then(relatorio => {
-      const url = window.URL.createObjectURL(relatorio); 
-      window.open(url);   
-    })
-  }
+  confirmacaoDeletarTudo() {
+    this.confirmationService.confirm({
+        message: 'Tem certeza que deseja apagar todos os convidados?',
+        header: 'Confirmação de Exclusão',
+        icon: 'pi pi-info-circle',
+        acceptLabel: 'Sim',
+        rejectLabel: 'Não',
+        accept: () => {
+            this.service.deletarTudo().subscribe(data => {this.pessoas = data});
+            this.mensagemConfirmacao = [{severity:'success', summary:'Todos os convidados', detail:'foram excluídos com sucesso !'}];
+        }
+    });
+}
+  
+
 }

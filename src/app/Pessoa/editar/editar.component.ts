@@ -33,7 +33,7 @@ export class EditarComponent implements OnInit {
     this.service.atualizarPessoas(pessoa)
       .subscribe(data => {
         this.pessoa = data;
-        this.toastr.success('Atualização Feita Com Sucesso !')
+        this.toastr.success('Convidado(a) Atualizado(a) Com Sucesso !')
         this.router.navigate(["listar"]);
       })
 

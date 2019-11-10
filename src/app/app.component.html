@@ -1,18 +1,16 @@
-<div style="text-align:center">
-  <h1>
-    API Restful<br>
-    Cadastro de Pessoas
-  </h1>
-  <img width="250" alt="Logo API"
-    src="assets/img/logo.png">
-</div>
+<div class="topo">
+  <img width="330" alt="Logo Casamento" src="http://alejunqueira.com.br/img/logo7.png">   
 <br>
-
 <div class="container" style="text-align: center">
-  <button (click)="Listar()" class="btn btn-info" style="margin: 0.5%" ><i class="fas fa-list"></i> Listar Tudo</button>
-  <button (click)="Novo()" class="btn btn-info" style="margin: 0.5%"><i class="fas fa-user-plus"></i> Cadastrar</button>
-  <button (click)="Pesquisar()" class="btn btn-info" style="margin: 0.5%"><i class="fas fa-search"></i> Pesquisar</button>
+  <button (click)="Listar()" class="btn btn-info" style="margin: 0.5%" ><i class="fas fa-list"></i> Listar Todos</button>
+  <button (click)="Novo()" class="btn btn-info" style="margin: 0.5%"><i class="fas fa-user-plus"></i> Cadastrar Convidado</button>
+  <button (click)="Pesquisar()" class="btn btn-info" style="margin: 0.5%"><i class="fas fa-search"></i> Filtrar</button>
+  <button (click)="Dashboard()" class="btn btn-info" style="margin: 0.5%"><i class="fa fa-bar-chart"></i> Relatórios</button>
+  <button (click)="Gerar()" class="btn btn-info"><i class="fas fa-download"></i>  Exportar Lista</button>
   <button (click)="VerificarSeguranca()" class="btn btn-warning" style="margin: 0.5%"><i class="fas fa-lock"></i> Verificar Segurança</button>
 </div>
-<hr>
-<router-outlet></router-outlet>
+  <img style="margin: 1%;" width="200" src="http://alejunqueira.com.br/img/divisor.png">
+</div>
+<div class="corpo">
+  <router-outlet></router-outlet>
+</div>
