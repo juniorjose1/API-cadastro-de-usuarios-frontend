@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Pessoa } from '../Modelo/Pessoa';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 export interface PessoaFiltroNome {
   nome: string;
