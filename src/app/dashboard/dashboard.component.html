@@ -6,17 +6,13 @@
         </div>
         <div class="card-body">
 
-                <div class="ui-g-12 ui-md-2">
-                
-                </div>
-    
-                <div class="ui-g-12 ui-md-8">
+                <div class="ui-g-12 ui-md-6">
                     <p-panel header="Quantas Pessoas Convidei ?">
                            <div style="text-align: center;"> 
-                            <circle-progress 
-                            [percent]="barraTotal"
-                            [radius]="100"
-                            [maxPercent]="barraTotal"
+                            <circle-progress
+                            [percent]="barraTotalConvidados"
+                            [radius]="117"
+                            [maxPercent]="barraTotalConvidados"
                             [outerStrokeWidth]="0"
                             [innerStrokeWidth]="35"
                             [outerStrokeColor]="'#17A2B8'"
@@ -26,38 +22,43 @@
                             ></circle-progress>
                             </div>
                     </p-panel>
+                    
                 </div>
     
-                <div class="ui-g-12 ui-md-2">
-                    
+                <div class="ui-g-12 ui-md-6">
+                    <p-panel header="Quantidade de Convidados Confirmados e Pendentes">
+                        <p-chart type="pie" [data]="graficoStatus"></p-chart>
+                    </p-panel>
                 </div>
             
             <div class="ui-g-12 ui-md-6">
                 <p-panel header="Quantidade de Convidados Por Gênero">
-                    <p-chart type="pie" [data]="pieChartData"></p-chart>
+                    <p-chart type="pie" [data]="graficoSexo"></p-chart>
                 </p-panel>
             </div>
 
             <div class="ui-g-12 ui-md-6">
                 <p-panel header="Quantidade de Convidados Por Faixa Etária">
-                    <p-chart type="pie" [data]="pieChartData2"></p-chart>
+                    <p-chart type="pie" [data]="graficoIdade"></p-chart>
                 </p-panel>
             </div>
 
+            <div class="d-none d-md-block">
             <div class="ui-g-12 ui-md-2">
                 
             </div>
 
             <div class="ui-g-12 ui-md-8">
                 <p-panel header="Quantidade de Convidados Por Grupo">
-                    <p-chart type="doughnut" [data]="doughnutChartData"></p-chart>
+                    <p-chart type="doughnut" [data]="graficoGrupo"></p-chart>
+                    <p>*Visível somente na versão desktop</p>
                 </p-panel>
             </div>
 
             <div class="ui-g-12 ui-md-2">
                 
             </div>
-
+            </div>
         </div>
     </div>
 </div>

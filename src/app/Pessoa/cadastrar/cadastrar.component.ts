@@ -16,6 +16,10 @@ class Grupo{
   constructor(public grupo: string) { }
 }
 
+class Status{
+  constructor(public sexo: string) { }
+}
+
 @Component({
   selector: 'app-cadastrar',
   templateUrl: './cadastrar.component.html',
@@ -30,6 +34,9 @@ export class CadastrarComponent implements OnInit {
   genero = ['Homem', 'Mulher']
   sexoSelecionado: Genero = new Genero('');
 
+  statusPessoa = ['Confirmado', 'Pendente']
+  statusSelecionado: Status = new Status('');
+
   faixaEtaria = ['Adulto', 'Criança/Adolescente', 'Bebê']
   idadeSelecionada: Idade = new Idade('');
 
@@ -41,11 +48,12 @@ export class CadastrarComponent implements OnInit {
   ngOnInit() {
   }
 
-  Cadastrar(nome: String, idade: String, sexo:String, grupo:String) {
+  Cadastrar(nome: String, idade: String, sexo:String, grupo:String, status:String) {
     this.pessoa.nome = nome;
     this.pessoa.idade = idade;
     this.pessoa.sexo = sexo;
     this.pessoa.grupo = grupo;
+    this.pessoa.status = status;
 
     this.service.cadastrarPessoas(this.pessoa)
       .subscribe(data => {

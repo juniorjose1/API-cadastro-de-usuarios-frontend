@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Pessoa } from '../Modelo/Pessoa';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 export interface PessoaFiltroNome {
   nome: string;
@@ -113,6 +113,21 @@ export class ServiceService {
 
   }
 
+  pesquisarStatus(filtroStatus: any): Promise<any> {
+    
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
+
+    let params = new HttpParams();
+
+    if (filtroStatus.status) {
+      params = params.set('status', filtroStatus.status);
+    }  
+
+    return this.http.get(`${this.Url}`, { headers, params })
+      .toPromise().then(response => response);
+
+  }
+
   relatorioPessoas(){
     const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
 
@@ -147,6 +162,14 @@ export class ServiceService {
     const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
 
     return this.http.get(`${this.Url}/estatisticas/por-grupo`, {headers})
+      .toPromise()
+      .then(response => response);
+  }
+
+  pessoasPorStatus(): Promise<any> {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWxleGFuZHJlOmFsZTE2MDU=');
+
+    return this.http.get(`${this.Url}/estatisticas/por-status`, {headers})
       .toPromise()
       .then(response => response);
   }

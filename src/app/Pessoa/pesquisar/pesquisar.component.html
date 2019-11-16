@@ -1,6 +1,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header" style="text-align: center;">
+            <div class="d-block d-sm-none" style="color: red; font-weight: bold;"><p>Para uma melhor usabilidade do sistema, vire a tela do seu smartphone</p></div>
             <h3>Filtros de Pesquisa <i class="fas fa-filter"></i></h3>
         </div>
         <div class="card-body">
@@ -11,6 +12,7 @@
                         <th>GENÊRO</th>
                         <th>FAIXA ETÁRIA</th>
                         <th>GRUPO</th>
+                        <th>STATUS</th>
                         <th>AÇÕES</th>
                     </tr>
                     <tr class="text-center">
@@ -30,9 +32,12 @@
                         <th>Filtrar<select (change)="PesquisarPessoasGrupo()" class="custom-select" id="inputListar" aria-label="Lista as opcoes grupo" [(ngModel)]="grupoSelecionado.nome">
                             <option value="">Todos</option>
                             <option *ngFor="let grupoSelecionado1 of grupoCasamento" value="{{grupoSelecionado1}}">{{grupoSelecionado1}}</option>
-                        </select></th>
-                        <th> 
-                            
+                        </select>
+                        </th>
+                        <th>Filtrar<select (change)="PesquisarPessoasStatus()" class="custom-select" id="inputListar" aria-label="Lista as opcoes status" [(ngModel)]="statusSelecionado.nome">
+                            <option value="">Todos</option>
+                            <option *ngFor="let statusSelecionado1 of statusOpcao" value="{{statusSelecionado1}}">{{statusSelecionado1}}</option>
+                        </select>    
                         </th>      
                     </tr>
                 </ng-template>
@@ -42,6 +47,7 @@
                         <td>{{pessoa.sexo}}</td>
                         <td>{{pessoa.idade}}</td>
                         <td>{{pessoa.grupo}}</td>
+                        <td>{{pessoa.status}}</td>
                         <td>
                             <button (click)="Editar(pessoa)" class="btn btn-warning"
                                 style="width:97px; margin-bottom: 2%; font-size: 15px;"><i class="fas fa-edit"></i> Editar</button>

@@ -8,27 +8,30 @@ import { ServiceService } from 'src/app/Service/service.service';
 })
 export class DashboardComponent implements OnInit {
 
-  pieChartData: any;
+  graficoSexo: any;
 
-  doughnutChartData: any;
+  graficoGrupo: any;
 
-  pieChartData2: any;
+  graficoIdade: any;
 
-  barraTotal: any;
+  barraTotalConvidados: any;
+
+  graficoStatus: any;
 
   constructor(private service:ServiceService) { }
 
   ngOnInit() {
-    this.configurarGraficoPizza();
-    this.configurarGraficoDonuts();
-    this.configurarGraficoPizza2();
-    this.configurarGraficoTotal();
+    this.configurarGraficoPizzaSexo();
+    this.configurarGraficoDonutsGrupo();
+    this.configurarGraficoPizzaIdade();
+    this.configurarGraficoTotalConvidados();
+    this.configurarGraficoPizzaStatus();
   }
 
-  configurarGraficoPizza(){
+  configurarGraficoPizzaSexo(){
     this.service.pessoasPorSexo()
     .then(dados => {
-     this.pieChartData = {
+     this.graficoSexo = {
         labels: dados.map(dado => dado.sexo),
         datasets: [
           {
@@ -40,10 +43,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  configurarGraficoDonuts(){
+  configurarGraficoDonutsGrupo(){
     this.service.pessoasPorGrupo()
     .then(dados => {
-     this.doughnutChartData = {
+     this.graficoGrupo = {
         labels: dados.map(dado => dado.grupo),
         datasets: [
           {
@@ -68,25 +71,40 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  configurarGraficoPizza2(){
+  configurarGraficoPizzaIdade(){
     this.service.pessoasPorIdade()
       .then(dados =>{
-        this.pieChartData2 = {
+        this.graficoIdade = {
           labels: dados.map(dado => dado.idade),
           datasets: [
             {
               data: dados.map(dado => dado.total),
-            backgroundColor: ['#0040FF', '#FE2E2E', '#04B431']
+            backgroundColor: ['#0040FF', '#FE2E2E', '#642EFE']
             }
           ]
         }
       })
   }
 
-  configurarGraficoTotal(){
+  configurarGraficoPizzaStatus(){
+    this.service.pessoasPorStatus()
+      .then(dados =>{
+        this.graficoStatus = {
+          labels: dados.map(dado => dado.status),
+          datasets: [
+            {
+              data: dados.map(dado => dado.total),
+            backgroundColor: ['#04B431', '#FFBF00']
+            }
+          ]
+        }
+      })
+  }
+
+  configurarGraficoTotalConvidados(){
     this.service.pessoasTotal()
       .then(dados => {
-        this.barraTotal = dados.map(dado => dado.total)
+        this.barraTotalConvidados = dados.map(dado => dado.total)
       })
   }
 

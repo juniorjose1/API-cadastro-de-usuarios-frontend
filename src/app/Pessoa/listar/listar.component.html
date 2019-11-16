@@ -1,6 +1,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header" style="text-align: center;">
+            <div class="d-block d-sm-none" style="color: red; font-weight: bold;"><p>Para uma melhor usabilidade do sistema, vire a tela do seu smartphone</p></div>
             <h3>Todos os Convidados <img src="http://alejunqueira.com.br/img/icone-convidados.png">
             </h3>
         </div>
@@ -12,6 +13,7 @@
                         <th>GÊNERO</th>
                         <th>FAIXA ETÁRIA</th>
                         <th>GRUPO</th>
+                        <th>STATUS</th>
                         <th>AÇÕES</th>
                     </tr>
                 </ng-template>
@@ -21,6 +23,7 @@
                         <td>{{pessoa.sexo}}</td>
                         <td>{{pessoa.idade}}</td>
                         <td>{{pessoa.grupo}}</td>
+                        <td>{{pessoa.status}}</td>
                         <td>
                             <button style="width:97px; margin-bottom: 2%; font-size: 15px;" (click)="Editar(pessoa)" class="btn btn-warning"
                                 ><i class="fas fa-edit"></i> Editar</button>

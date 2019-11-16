@@ -16,6 +16,10 @@ class Grupo{
   constructor(public nome: string) { }
 }
 
+class Status{
+  constructor(public nome: string) { }
+}
+
 @Component({
   selector: 'app-pesquisar',
   templateUrl: './pesquisar.component.html',
@@ -27,6 +31,7 @@ export class PesquisarComponent implements OnInit {
   idade: string;
   sexo: string;
   grupo: string;
+  status: string;
   tudo: string;
 
   genero = ['Homem', 'Mulher']
@@ -37,6 +42,9 @@ export class PesquisarComponent implements OnInit {
 
   grupoCasamento = ['Amigos do Noivo', 'Família do Noivo', 'Amigos da Noiva', 'Família da Noiva', 'Amigos em Comum']
   grupoSelecionado: Grupo = new Grupo('');
+
+  statusOpcao = ['Confirmado', 'Pendente']
+  statusSelecionado: Status = new Status('');
 
   constructor(private serviceService: ServiceService, private router: Router, private toastr: ToastrService) {  }
 
@@ -61,6 +69,11 @@ export class PesquisarComponent implements OnInit {
 
   PesquisarPessoasGrupo() {
     this.serviceService.pesquisarGrupo({ grupo: this.grupoSelecionado.nome })
+      .then(pessoas => this.pessoas = pessoas);
+  }
+
+  PesquisarPessoasStatus() {
+    this.serviceService.pesquisarStatus({ status: this.statusSelecionado.nome })
       .then(pessoas => this.pessoas = pessoas);
   }
 

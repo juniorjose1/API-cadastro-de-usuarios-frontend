@@ -4,4 +4,5 @@ export class Pessoa{
     idade:String;
     sexo:String;
     grupo:String;
+    status:String;
 }

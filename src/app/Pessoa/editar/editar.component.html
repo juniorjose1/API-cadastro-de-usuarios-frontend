@@ -6,7 +6,7 @@
             <div class="card-body">
                 <form #f="ngForm">    
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-6">
                             <div class="form-grupo">
                                 <label for="nome">Nome:</label>
                                 <input type="text" class="form-control" [(ngModel)]="pessoa.nome" name="nome" #nome="ngModel"
@@ -37,6 +37,22 @@
                             <span class="help-block" *ngIf="!sexo.valid && sexo.touched">
                                     <ul>
                                         <li *ngIf="sexo.errors.required" style="color: red">
+                                            Obrigatório
+                                        </li>
+                                    </ul>
+                            </span>    
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-grupo">
+                                <label for="status">Status:</label>   
+                            </div>     
+                            <select class="custom-select" id="inputListarStatus" aria-label="Lista as opcoes status" [(ngModel)]="pessoa.status" name="status" #status="ngModel" required>
+                                <option value="Confirmado">Confirmado</option>
+                                <option value="Pendente">Pendente</option>
+                            </select>
+                            <span class="help-block" *ngIf="!status.valid && status.touched">
+                                    <ul>
+                                        <li *ngIf="status.errors.required" style="color: red">
                                             Obrigatório
                                         </li>
                                     </ul>

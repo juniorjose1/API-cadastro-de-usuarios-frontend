@@ -66,9 +66,9 @@ const routes: Routes = [
       animationDuration: 300,
       subtitle: 'Convidados',
       showUnits: false,
-      titleFontSize: '40',
-      subtitleFontSize: '17',
-      subtitleColor: 'black',
+      titleFontSize: '50',
+      subtitleFontSize: '25',
+      subtitleColor: '#444444'
     }),
     ToastrModule.forRoot({
       timeOut: 5000,
