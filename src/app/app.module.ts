@@ -68,7 +68,8 @@ const routes: Routes = [
       showUnits: false,
       titleFontSize: '50',
       subtitleFontSize: '25',
-      subtitleColor: '#444444'
+      subtitleColor: '#444444',
+      responsive: true
     }),
     ToastrModule.forRoot({
       timeOut: 5000,

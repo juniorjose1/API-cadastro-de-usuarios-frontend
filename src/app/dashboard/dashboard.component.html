@@ -5,10 +5,12 @@
             <h6>Para ocultar um campo no gráfico, clique sobre ele.</h6>    
         </div>
         <div class="card-body">
+           
 
-                <div class="ui-g-12 ui-md-6">
-                    <p-panel header="Quantas Pessoas Convidei ?">
-                           <div style="text-align: center;"> 
+                <div class="ui-g-12 ui-md-4">
+                    
+                           
+                            
                             <circle-progress
                             [percent]="barraTotalConvidados"
                             [radius]="117"
@@ -20,12 +22,14 @@
                             [animation]="true"
                             [animationDuration]="500"
                             ></circle-progress>
-                            </div>
-                    </p-panel>
+                            
+
+                            
+                    
                     
                 </div>
     
-                <div class="ui-g-12 ui-md-6">
+                <div class="ui-g-12 ui-md-8">
                     <p-panel header="Quantidade de Convidados Confirmados e Pendentes">
                         <p-chart type="pie" [data]="graficoStatus"></p-chart>
                     </p-panel>
@@ -44,18 +48,18 @@
             </div>
 
             <div class="d-none d-md-block">
-            <div class="ui-g-12 ui-md-2">
+            <div class="ui-g-12 ui-md-1">
                 
             </div>
 
-            <div class="ui-g-12 ui-md-8">
+            <div class="ui-g-12 ui-md-10">
                 <p-panel header="Quantidade de Convidados Por Grupo">
                     <p-chart type="doughnut" [data]="graficoGrupo"></p-chart>
                     <p>*Visível somente na versão desktop</p>
                 </p-panel>
             </div>
 
-            <div class="ui-g-12 ui-md-2">
+            <div class="ui-g-12 ui-md-1">
                 
             </div>
             </div>
