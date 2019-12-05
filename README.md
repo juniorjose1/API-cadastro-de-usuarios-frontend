@@ -34,7 +34,7 @@
 </ul>
 <p>Esta SPA foi hospedada na Hostinger, que é um provedor de Hospedagem que utiliza Apache em paralelo com o NGINX.</p>
 
-<p>Para acessar o sistema, basta entrar em http://alejunqueira.com.br e <b>aguardar 20 segundos</b> para que a API Restful seja carregada, e assim listar os convidados cadastrados, pois a API Back-end está hospedada em um servidor FREE.</p>
+<p>Para acessar o sistema, basta entrar em http://alejunqueira.com.br e <b>aguardar de 30 segundos a 1 minuto no máximo</b> para que a API Restful seja carregada, e assim listar os convidados cadastrados, pois a API Back-end está hospedada em um servidor FREE.</p>
   
 <p>Segue abaixo algumas telas do sistema:</p>
 
